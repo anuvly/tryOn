@@ -1,0 +1,7 @@
+node_modules/
+.env
+backend/data/db.json
+backend/uploads/profiles/*
+backend/uploads/results/*
+!backend/uploads/profiles/.gitkeep
+!backend/uploads/results/.gitkeep

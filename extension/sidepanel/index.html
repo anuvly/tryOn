@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mirror</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+
+    <header class="topbar">
+      <div class="wordmark">Mirror</div>
+      <button id="rescanBtn" class="icon-btn" title="Re-scan this page" aria-label="Re-scan this page">
+        <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6">
+          <path d="M16 4v4h-4M4 16v-4h4M15.5 8a6 6 0 1 0-1.3 6.4M4.5 12a6 6 0 0 0 1.3-6.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </header>
+
+    <!-- ===================== ONBOARDING ===================== -->
+    <section id="view-onboarding" class="view">
+      <div class="frame frame--empty" id="onboardingEmptyFrame">
+        <p class="frame-caption">Your profile isn't set up yet</p>
+      </div>
+      <h1 class="section-title">Create your profile</h1>
+      <p class="body-text">
+        A few photos, taken once, let Mirror show you in anything you find while shopping.
+      </p>
+      <ul class="slot-list" id="slotList"><!-- populated by JS --></ul>
+      <button id="startProfileBtn" class="btn btn-primary">Add your first photo</button>
+    </section>
+
+    <!-- ===================== PHOTO CAPTURE STEP ===================== -->
+    <section id="view-capture" class="view">
+      <button class="link-back" id="captureBack">← Back</button>
+      <h2 class="section-title" id="captureTitle">Full-body photo</h2>
+      <p class="body-text" id="captureHint">Stand facing the camera, arms relaxed, plain background, good light.</p>
+      <div class="frame frame--upload" id="captureDropzone">
+        <input type="file" id="captureInput" accept="image/*" hidden />
+        <span id="captureFrameLabel">Tap to choose a photo</span>
+      </div>
+      <button id="captureSaveBtn" class="btn btn-primary" disabled>Save photo</button>
+    </section>
+
+    <!-- ===================== MAIN VIEW ===================== -->
+    <section id="view-main" class="view">
+
+      <div class="profile-chip" id="profileChip">
+        <span class="profile-chip-dot"></span>
+        <span id="profileChipLabel">Profile ready</span>
+        <button id="manageProfileBtn" class="link-inline">Manage</button>
+      </div>
+
+      <div id="productsEmpty" class="empty-state">
+        <p class="body-text">No products spotted on this page yet.</p>
+        <button id="rescanBtn2" class="btn btn-ghost">Scan this page</button>
+      </div>
+
+      <div id="productStrip" class="product-strip"><!-- product cards injected --></div>
+
+      <div id="detailPanel" class="detail-panel">
+        <div class="frame frame--product" id="detailFrame">
+          <img id="detailImage" alt="" />
+        </div>
+        <h2 class="section-title" id="detailTitle"></h2>
+        <p class="body-text-muted" id="detailPrice"></p>
+
+        <div id="detailImageThumbs" class="thumb-row"></div>
+
+        <button id="tryOnBtn" class="btn btn-primary">Try it on</button>
+        <p id="missingPhotoNote" class="note note--warn"></p>
+      </div>
+
+      <div id="progressPanel" class="progress-panel" hidden>
+        <p class="body-text" id="progressLabel">Generating your look…</p>
+      </div>
+
+      <div id="resultPanel" class="result-panel" hidden>
+        <div class="frame frame--result">
+          <img id="resultImage" alt="Generated try-on result" />
+        </div>
+        <div class="result-actions">
+          <button id="saveResultBtn" class="btn btn-secondary">Save</button>
+          <button id="retryResultBtn" class="btn btn-ghost">Retry</button>
+          <button id="tryAnotherBtn" class="btn btn-ghost">Try another</button>
+        </div>
+      </div>
+
+      <div id="errorPanel" class="error-panel" hidden>
+        <p class="body-text" id="errorMessage"></p>
+        <button id="errorRetryBtn" class="btn btn-ghost">Try again</button>
+      </div>
+
+    </section>
+
+  </div>
+
+  <script type="module" src="index.js"></script>
+</body>
+</html>
